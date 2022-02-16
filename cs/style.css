@@ -1,0 +1,21 @@
+.background {
+    background-image: url("../img/mboutrechtgebouwedit.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* filter: blur(3px); */
+    /* -webkit-filter: blur(3px); */
+    height: 100%;
+}
+
+#white {
+    color: white;
+}
+
+#list {
+    background-color:rgba(175, 175, 175, 0.596);
+    
+    width: 550px;
+    height: 300px;
+    position: center;
+    margin-top: 20%;
+}
