@@ -18,14 +18,15 @@ session_start();
     <div class="container" id ="list">
         <div class="row">
             <div class="col-sm">
-                <form action = "./login.php" method="post" id="white">
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
+                <form action = "./login.php" method="post">
+                    <br>
+                    <div class="form-floating mb-3">
                         <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                        <label for="floatingInput">Email address</label>
                     </div>
-                    <div class="mb-3">
-                        <label for="pass" class="form-label">Password</label>
+                    <div class="form-floating mb-3">
                         <input name="pass" type="password" class="form-control" id="pass">
+                        <label for="floatingInput">Password</label>
                     </div>
                     <div class="mb-3">
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -34,7 +35,6 @@ session_start();
             </div>
         </div>
     </div>
-
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>

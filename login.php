@@ -1,5 +1,6 @@
 <?php
     include_once("./db/dbConnect.php");
+    session_start();
 
     $email = $_POST["email"];
     $pass = $_POST["pass"];
@@ -16,12 +17,10 @@
             $_SESSION["email"] = $record["email"];
             $_SESSION["firstname"] = $data["firstname"];
             $_SESSION["lastname"] = $data["lastname"];
-            setcookie("email", $record["email"],+360000);
         header("Refresh: 0; ./test.php");
     } else {
-        // if email fails
+        // if email, password or both fails
         $message = "Your credentials are not correct.";
-        // var_dump($_POST);
         echo $message;
         header("Refresh: 0; ./index.php");
     }
