@@ -1,1 +1,1 @@
-Magazijn project voor MBO Utrecht
+Magazijn project voor MBO Utrecht.
