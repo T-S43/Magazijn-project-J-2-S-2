@@ -7,6 +7,13 @@
     height: 100%;
 }
 
+.logo {
+    background-image: url("../img/mboUtrechtlogo.png");
+    width: 10%;
+    height: auto;
+    max-width: 50px;
+}
+
 #white {
     color: white;
 }
