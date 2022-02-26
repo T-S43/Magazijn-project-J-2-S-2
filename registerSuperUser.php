@@ -17,6 +17,10 @@ $slm = $conn->query("SELECT `rollName` FROM `roll`");
     <input type="email" name="email" placeholder="Type E-mail">
     <br><br>
 
+    <label>Password</label>
+    <input type="password" name="pass" placeholder="Type password">
+    <br><br>
+
     <label>Firstname</label>
     <input type="text" name="Firstname" placeholder="Type firstname">
     <br><br>
@@ -40,8 +44,28 @@ $slm = $conn->query("SELECT `rollName` FROM `roll`");
         ?>
     </select>
     <br><br>
+    <!--Button-->
+    <input type="submit" name="submit" value="Submit">
 </form>
 
 </body>
 </html>
+<?php
+//insert into database
+if(isset($_POST['submit'])) {
+    $email = $_POST['email'];
+    $password=$_POST['pass'];
+    $firstName = $_POST['Firstname'];
+    $infix = $_POST['infix'];
+    $lastName = $_POST['lastname'];
+    $rolls = $_POST['roll'];
+    $qry = "INSERT INTO users values(null, '$email','$password', '$firstName', '$infix', '$lastName', '$rolls')";
 
+    if(mysqli_query($conn, $qry)){
+        echo 'works';
+
+    }else{
+        echo mysqli_error($conn);
+    }
+}
+?>
