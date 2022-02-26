@@ -62,10 +62,10 @@ if(isset($_POST['submit'])) {
     $qry = "INSERT INTO users values(null, '$email','$password', '$firstName', '$infix', '$lastName', '$rolls')";
 
     if(mysqli_query($conn, $qry)){
-        echo 'works';
+        echo 'User has been made';
 
     }else{
-        echo mysqli_error($conn);
+        echo 'There has been a problem';
     }
 }
 ?>
