@@ -14,5 +14,3 @@ Student -- (request products)
 (request products) -- Super_user
 }
 @enduml
-
-
