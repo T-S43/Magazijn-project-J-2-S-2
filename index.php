@@ -1,33 +1,9 @@
 <?php
 session_start();
 if (isset($_SESSION['UserRoll'])) {
-    $_SESSION['UserRoll'] = $record("UserRoll");
-    // "SELECT * FROM `users` WHERE `email` = '$email'";
-
-    switch ($record['UserRoll']) {
-        case "student":
-            header("Refresh: 0; ./tijdelijke_uitlog.php");
-        break;
-        
-        case "financial-admin":
-            header("Refresh: 0; ./tijdelijke_uitlog.php");
-        break;
-        
-        case "super-user":
-            header("Refresh: 0; ./tijdelijke_uitlog.php");
-        break;
-        
-        case "warehouse-admin":
-            header("Refresh: 0; ./tijdelijke_uitlog.php");
-        break;
-
-        default;
-            header("Refresh: 0; ./index.php");
-        break;
-    }
+    session_unset();
+    header("Refresh: 0; ./index.php");
 }
-// send to error page
-
 ?>
 <!doctype html>
 <html lang="en">
