@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 22 feb 2022 om 13:46
+-- Gegenereerd op: 26 feb 2022 om 20:10
 -- Serverversie: 5.7.31
 -- PHP-versie: 7.3.21
 
@@ -33,6 +33,14 @@ CREATE TABLE IF NOT EXISTS `roll` (
   `Omschrijving` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`rollName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `roll`
+--
+
+INSERT INTO `roll` (`rollName`, `Omschrijving`) VALUES
+('Student', 'de leerlingen'),
+('SuperUser', 'The main man');
 
 -- --------------------------------------------------------
 
@@ -67,7 +75,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `UserRoll` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `userRoll` (`UserRoll`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `pass`, `firstname`, `infix`, `lastname`, `UserRoll`) VALUES
+(3, 'skylorvd@gmail.com', '123', 'sky', 'van', 'duss', 'SuperUser');
 
 -- --------------------------------------------------------
 
