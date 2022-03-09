@@ -74,8 +74,8 @@ $slm = $conn->query("SELECT `rollName` FROM `roll`");
                     <td><?php echo $row['UserRoll']?></td>
                     <!--edit and deletion of the items-->
                     <td>
-                        <a href="./edit.php?id=<?php echo $id; ?>">edit</a>
-                        <a href="delete.php?id=<?php echo $id; ?>">Delete</a>
+                        <a href="./edit.php?id=<?php echo $id; ?>">Edit</a>
+                        <a href="./delete.php?id=<?php echo $id; ?>">Delete</a>
                 </tr>
                 <?php
             }
@@ -98,10 +98,9 @@ if(isset($_POST['submit'])) {
     $qry = "INSERT INTO users values(null, '$email','$password', '$firstName', '$infix', '$lastName', '$rolls')";
 
     if(mysqli_query($conn, $qry)){
-        echo 'User has been made';
-
+        header("Refresh: 0; ./registerSuperUser.php");
     }else{
-        echo 'There has been a problem';
+        echo mysqli_error($conn);
     }
 }
 ?>

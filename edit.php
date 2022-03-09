@@ -2,21 +2,22 @@
 include("./db/dbConnect.php");
 
 $slt = $conn->query("SELECT * FROM `users`");
+$slm = $conn->query("SELECT `rollName` FROM `roll`");
 
 if(!$conn){
     die('error in db' . mysqli_error($conn));
 }else{
     $id = $_GET['id'];
-    $qry="SELECT * FROM `beoordeling` WHERE `id` = $id";
+    $qry="SELECT * FROM `users` WHERE `id` = '$id'";
     $run= $conn->query($qry);
     if($run->num_rows>0){
         while($row=$run->fetch_assoc()){
             $email=$row['email'];
-            $pass=$row['password'];
-            $firstname=$row['Firstname'];
+            $pass=$row['pass'];
+            $firstname=$row['firstname'];
             $infix=$row['infix'];
             $lastname=$row['lastname'];
-            $UserRoll=$row['roll'];
+            $UserRoll=$row['UserRoll'];
         }
     }
 }
@@ -31,28 +32,28 @@ if(!$conn){
 <body>
 <form method="post">
     <label>E-mail</label>
-    <input type="email" name="email" placeholder="Type E-mail">
+    <input type="email" name="email" value="<?php echo $email;?>">
     <br><br>
 
     <label>Password</label>
-    <input type="password" name="pass" placeholder="Type password">
+    <input type="password" name="pass" value="<?php echo $pass;?>">
     <br><br>
 
     <label>Firstname</label>
-    <input type="text" name="Firstname" placeholder="Type firstname">
+    <input type="text" name="Firstname" value="<?php echo $firstname;?>">
     <br><br>
 
     <label>Infix</label>
-    <input type="text" name="infix" placeholder="Type infix">
+    <input type="text" name="infix" value="<?php echo $infix;?>">
     <br><br>
 
     <label>Lastname</label>
-    <input type="text" name="lastname" placeholder="Type lastname">
+    <input type="text" name="lastname" value="<?php echo $lastname;?>">
     <br><br>
 
     <label>Roll</label>
     <select name="roll">
-        <option selected disabled> select</option>
+        <option selected disabled> <?php echo $UserRoll;?></option>
         <?php
         while($rows=$slm->fetch_assoc()){
             $roll = $rows['rollName'];
@@ -62,6 +63,22 @@ if(!$conn){
     </select>
     <br><br>
     <!--Button-->
-    <input type="submit" name="submit" value="Submit">
-</form>
+    <input type="submit" name="update" value="Update">
 </body>
+</html>
+<?php
+if(isset($_POST['update'])){
+    $email=$_POST['email'];
+    $pass=$_POST['pass'];
+    $firstname=$_POST['Firstname'];
+    $infix=$_POST['infix'];
+    $lastname=$_POST['lastname'];
+    $UserRoll=$_POST['roll'];
+    $qry="UPDATE `users` SET `email`='$email', `pass`='$pass', `firstname`='$firstname', `infix`='$infix', `lastname`='$lastname', `UserRoll`='$UserRoll' WHERE `id`=$id";
+    if(mysqli_query($conn, $qry)){
+        header('location: ./registerSuperUser.php');
+    }else{
+        echo mysqli_error($conn);
+    }
+}
+?>
