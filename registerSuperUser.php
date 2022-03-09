@@ -46,7 +46,44 @@ $slm = $conn->query("SELECT `rollName` FROM `roll`");
     <br><br>
     <!--Button-->
     <input type="submit" name="submit" value="Submit">
-</form>
+
+    <!--The read from the database-->
+    <h3>Results List</h3>
+    <table style="width: 80%" border="1">
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Voornaam</th>
+            <th>Tussenvoegsel</th>
+            <th>Achternaam</th>
+            <th>roll</th>
+        </tr>
+        <!--select the rows so the information can be shown in a read-->
+        <?php
+        $qry="SELECT * FROM `users`";
+        $run= $conn->query($qry);
+        if($run->num_rows>0){
+            while($row=$run->fetch_assoc()){
+                $id = $row['id'];
+                ?>
+                <tr>
+                    <td><?php echo $row['id']?></td>
+                    <td><?php echo $row['email']?></td>
+                    <td><?php echo $row['firstname']?></td>
+                    <td><?php echo $row['infix']?></td>
+                    <td><?php echo $row['lastname']?></td>
+                    <td><?php echo $row['UserRoll']?></td>
+                    <!--edit and deletion of the items-->
+                    <td>
+                        <a href="./edit.php?id=<?php echo $id; ?>">Edit</a>
+                        <a href="./delete.php?id=<?php echo $id; ?>">Delete</a>
+                </tr>
+                <?php
+            }
+        }
+        ?>
+
+
 
 </body>
 </html>
@@ -60,12 +97,11 @@ if(isset($_POST['submit'])) {
     $lastName = $_POST['lastname'];
     $rolls = $_POST['roll'];
     $qry = "INSERT INTO users values(null, '$email','$password', '$firstName', '$infix', '$lastName', '$rolls')";
-
+//checking for the connection
     if(mysqli_query($conn, $qry)){
-        echo 'User has been made';
-
+        header("Refresh: 0; ./registerSuperUser.php");
     }else{
-        echo 'There has been a problem';
+        echo mysqli_error($conn);
     }
 }
 ?>
