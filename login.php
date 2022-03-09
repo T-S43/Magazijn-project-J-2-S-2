@@ -17,7 +17,30 @@
             $_SESSION["email"] = $record["email"];
             $_SESSION["firstname"] = $data["firstname"];
             $_SESSION["lastname"] = $data["lastname"];
-        header("Refresh: 0; ./test.php");
+            $_SESSION["UserRoll"] = $data["UserRoll"];
+
+        switch ($record["UserRoll"]) {
+            case "student":
+                header("Refresh: 0; ./student.php");
+            break;
+            
+            case "financial-admin":
+                header("Refresh: 0; ./financial-admin.php");
+            break;
+            
+            case "super-user":
+                header("Refresh: 0; ./super-user.php");
+            break;
+            
+            case "warehouse-admin":
+                header("Refresh: 0; ./warehouse-admin.php");
+            break;
+
+            default;
+                header("Refresh: 0; ./index.php");
+            break;
+        }
+        // header("Refresh: 0; ./test.php");
     } else {
         // if email, password or both fails
         $message = "Your credentials are not correct.";

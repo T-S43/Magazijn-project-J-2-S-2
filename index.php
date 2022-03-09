@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (isset($_SESSION['UserRoll'])) {
+    session_unset();
+    header("Refresh: 0; ./index.php");
+}
 ?>
 <!doctype html>
 <html lang="en">
