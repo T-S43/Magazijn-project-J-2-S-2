@@ -3,10 +3,12 @@ include("./db/dbConnect.php");
 
 $slt = $conn->query("SELECT * FROM `users`");
 $slm = $conn->query("SELECT `rollName` FROM `roll`");
-
+// check if the right information is send
 if(!$conn){
     die('error in db' . mysqli_error($conn));
-}else{
+}
+//getting the information to use for the html that we write it to there
+else{
     $id = $_GET['id'];
     $qry="SELECT * FROM `users` WHERE `id` = '$id'";
     $run= $conn->query($qry);
@@ -54,6 +56,7 @@ if(!$conn){
     <label>Roll</label>
     <select name="roll">
         <option selected disabled> <?php echo $UserRoll;?></option>
+        <!--the code so we can look at the rolls-->
         <?php
         while($rows=$slm->fetch_assoc()){
             $roll = $rows['rollName'];
@@ -67,6 +70,7 @@ if(!$conn){
 </body>
 </html>
 <?php
+//the update script to write it to the database
 if(isset($_POST['update'])){
     $email=$_POST['email'];
     $pass=$_POST['pass'];
@@ -75,6 +79,7 @@ if(isset($_POST['update'])){
     $lastname=$_POST['lastname'];
     $UserRoll=$_POST['roll'];
     $qry="UPDATE `users` SET `email`='$email', `pass`='$pass', `firstname`='$firstname', `infix`='$infix', `lastname`='$lastname', `UserRoll`='$UserRoll' WHERE `id`=$id";
+    //checking fi everything works
     if(mysqli_query($conn, $qry)){
         header('location: ./registerSuperUser.php');
     }else{

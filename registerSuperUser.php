@@ -58,6 +58,7 @@ $slm = $conn->query("SELECT `rollName` FROM `roll`");
             <th>Achternaam</th>
             <th>roll</th>
         </tr>
+        <!--select the rows so the information can be shown in a read-->
         <?php
         $qry="SELECT * FROM `users`";
         $run= $conn->query($qry);
@@ -96,7 +97,7 @@ if(isset($_POST['submit'])) {
     $lastName = $_POST['lastname'];
     $rolls = $_POST['roll'];
     $qry = "INSERT INTO users values(null, '$email','$password', '$firstName', '$infix', '$lastName', '$rolls')";
-
+//checking for the connection
     if(mysqli_query($conn, $qry)){
         header("Refresh: 0; ./registerSuperUser.php");
     }else{
