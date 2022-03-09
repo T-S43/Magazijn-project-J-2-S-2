@@ -3,6 +3,7 @@ include('./db/dbConnect.php');
 session_start();
 // var_dump($_SESSION);
 
+// Userrole is an easier way to give permissions to the specific user
 switch ($_SESSION["UserRoll"]) {
     case "super-user":
         $userRole = "1";

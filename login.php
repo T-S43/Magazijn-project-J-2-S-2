@@ -14,11 +14,13 @@
         $sql = "SELECT * FROM `users` WHERE `email` = '$email'";
         $query = mysqli_query($conn, $sql);
         $data = mysqli_fetch_assoc($query);
+        // We are giving with the user info
             $_SESSION["email"] = $record["email"];
             $_SESSION["firstname"] = $data["firstname"];
             $_SESSION["lastname"] = $data["lastname"];
             $_SESSION["UserRoll"] = $data["UserRoll"];
 
+        // Depending on the user rol he or she will be send to their page
         switch ($record["UserRoll"]) {
             case "student":
                 header("Refresh: 0; ./student.php");
