@@ -67,7 +67,7 @@ $slm = $conn->query("SELECT `rollName` FROM `roll`");
                 $id = $row['id'];
                 ?>
                 <tr>
-                    <td><?php echo $row['id']?></td>
+                    <td><?= $row['id']?></td>
                     <td><?php echo $row['email']?></td>
                     <td><?php echo $row['firstname']?></td>
                     <td><?php echo $row['infix']?></td>
