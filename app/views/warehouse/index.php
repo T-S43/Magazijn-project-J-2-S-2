@@ -1,6 +1,15 @@
 <h1>Warehouse</h1>
-<h4>id      Naam    Aantal      </h4>
 
-<?php
-echo $data["warehouseData"];
-?>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Naam</th>
+        <th>Aantal</th>
+        <th>Beschrikbaar</th>
+        <th>locatieID</th>
+    </tr>
+    <tr>
+        <td><?php echo $data["warehouseData"];?></td>
+    </tr>
+
+</table>
