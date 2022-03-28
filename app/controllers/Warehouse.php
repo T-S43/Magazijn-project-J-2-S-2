@@ -8,8 +8,9 @@ class Warehouse extends Controller {
         $warehouseData = $this->warehouseModel->getWarehouse();
         $rows = "";
         foreach($warehouseData as $value) {
-            $rows .= $value->id . "</td><td> " . $value->Name . "</td><td> " . $value->Amount . "</td><td> " . $value->available . "</td><td> " . $value->LocationID . "</td> ";
-            $rows .= "<br>";
+            $rows .= "<tr>";
+            $rows .= "<td>" . $value->id . "</td><td> " . $value->Name . "</td><td> " . $value->Amount . "</td><td> " . $value->available . "</td><td> " . $value->LocationID . "</td> ";
+            $rows .= "</tr>";
         }
         $data = [
             'title' => 'Home page',
