@@ -7,4 +7,4 @@ foreach ($data['users'] as $user) {
 */
 ?>
 HOME PAGE<br>
-<a href="/countries/index" class="btn btn-primary">landen</a>
+<a href="/warehouse/index" class="btn btn-primary">warehouse</a>

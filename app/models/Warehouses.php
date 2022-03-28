@@ -1,13 +1,13 @@
 <?php
-class Country {
-	private $db;
+class Warehouses {
+    private $db;
 
     public function __construct() {
         $this->db = new Database;
-	}
+    }
 
-    public function getCountries() {
-        $this->db->query("SELECT * FROM country");
+    public function getWarehouse() {
+        $this->db->query("SELECT * FROM warehouse");
         $result = $this->db->resultSet();
         // var_dump($result);exit();
         return $result;
