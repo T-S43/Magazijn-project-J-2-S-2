@@ -6,5 +6,13 @@ foreach ($data['users'] as $user) {
 }
 */
 ?>
-HOME PAGE<br>
-<a href="/warehouse/index" class="btn btn-primary">warehouse</a>
+
+<ul>
+    <li>
+        <a href="<?php echo URLROOT; ?>/warehouse/index">warehouse</a>
+    </li>
+    <li>
+        <a href="<?php echo URLROOT; ?>/warehouse/Items">Items</a>
+    </li>
+
+
