@@ -24,11 +24,18 @@ $record = "";
     $records = "";
 
 while ($record = mysqli_fetch_assoc($result)) {
+    if ($record['accepted'] == '0') {
+        $acceptedCheck = 'Niet geaccepteerd';
+    } else if ($record['accepted'] == '1') {
+        $acceptedCheck = 'Geaccepteerd';
+    }
+
         $records .= "<tr><td>" .
             $record["Name"] . "</td><td>" .
             $record["message"] . "</td><td>" .
             $record["amount"] . "</td><td>".
-            $record["accepted"] . "</td></tr>";
+            $acceptedCheck . "</td></tr>";
+
     }
 ?>
 
