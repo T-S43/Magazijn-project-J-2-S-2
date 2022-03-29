@@ -24,14 +24,11 @@ $record = "";
     $records = "";
 
 while ($record = mysqli_fetch_assoc($result)) {
-    // if($warehouse[]){
         $records .= "<tr><td>" .
             $record["Name"] . "</td><td>" .
             $record["message"] . "</td><td>" .
-            $record["amount"] . "</td><td></tr>";
-            // . $record["Status"] . "</td>
-
-        // }
+            $record["amount"] . "</td><td>".
+            $record["accepted"] . "</td></tr>";
     }
 ?>
 

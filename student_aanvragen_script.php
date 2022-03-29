@@ -6,8 +6,9 @@ include('./functions/userRoleSystem.php');
     $amount = $_POST["amount"];
     $message = $_POST["message"];
     $location = $_POST["location"];
+    $accepted = '0';
 
-$sql = "INSERT INTO `request` (`id`, `userId`, `warehouseId`, `amount`, `message`, `location`) VALUES (NULL, '$userId','$id','$amount','$message','$location')";
+$sql = "INSERT INTO `request` (`id`, `userId`, `warehouseId`, `amount`, `message`, `location`, `accepted`) VALUES (NULL, '$userId','$id','$amount','$message','$location', '$accepted')";
 
 mysqli_query($conn, $sql);
 header("Location: ./student.php");
