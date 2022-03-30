@@ -75,8 +75,8 @@ $slm = $conn->query("SELECT `rollName` FROM `roll`");
                     <td><?php echo $row['UserRoll']?></td>
                     <!--edit and deletion of the items-->
                     <td>
-                        <a href="./edit.php?id=<?php echo $id; ?>">Edit</a>
-                        <a href="./delete.php?id=<?php echo $id; ?>">Delete</a>
+                        <a href="edit.php?id=<?php echo $id; ?>">Edit</a>
+                        <a href="delete.php?id=<?php echo $id; ?>">Delete</a>
                 </tr>
                 <?php
             }

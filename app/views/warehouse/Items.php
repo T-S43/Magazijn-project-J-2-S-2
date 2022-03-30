@@ -1,7 +1,7 @@
 <div class="container-Items">
     <div class="wrapper-Items">
         <h2>Items</h2>
-
+        <!--the setup for the full import system to write info to the database that is called in the controller and than updated in the model-->
         <form
                 id="Items-form"
                 method="POST"
