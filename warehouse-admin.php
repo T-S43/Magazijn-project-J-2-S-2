@@ -8,3 +8,5 @@ if (! ($userRole == "2") ) {
 ?>
 <h2>Welkom <?php echo($_SESSION["firstname"])?> <?php echo($_SESSION["lastname"])?></h2>
 <h2>User roll = <?php echo ($_SESSION["UserRoll"])?></h2>
+
+<a href="./lending-admin-read.php">overzicht</a>

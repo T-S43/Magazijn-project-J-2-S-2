@@ -1,3 +1,4 @@
+
 -- phpMyAdmin SQL Dump
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
@@ -31,18 +32,18 @@ DROP TABLE IF EXISTS `lend`;
 CREATE TABLE IF NOT EXISTS `lend` (
   `lendID` int NOT NULL AUTO_INCREMENT,
   `warehouseID` int NOT NULL,
-  `warehouseItem` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `warehouseItem` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
   `warehouseAvailable` tinyint NOT NULL,
   `warehouseAmount` int NOT NULL,
   `userID` int NOT NULL,
   `userFirstname` text NOT NULL,
-  `userInfix` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `userInfix` text CHARACTER SET utf8mb4,
   `userLastname` varchar(255) NOT NULL,
   `userEmail` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lendApproved` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`lendID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `lend`

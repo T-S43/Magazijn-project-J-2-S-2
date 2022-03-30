@@ -25,7 +25,7 @@ while ($request = mysqli_fetch_assoc($pullLendRequest)) {
     <tr>
         <td class='generated-text'>" . $request["warehouseItem"] . "</td>
     </tr>
-    <tr>
+    <tr>    
         <td class='generated-text'>" . $request["warehouseAvailable"] . "</td>
     </tr>
     <tr>
