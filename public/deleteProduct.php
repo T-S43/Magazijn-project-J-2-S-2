@@ -1,6 +1,6 @@
 <?php
 //including the connect from the database
-include("./db/dbConnect.php");
+include("/db/dbConnect.php");
 //checking if you are connected
 if(!$conn){
     die('error in db' . mysqli_error($conn));

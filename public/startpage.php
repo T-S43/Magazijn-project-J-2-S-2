@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION['UserRoll'])) {
     session_unset();
-    header("Refresh: 0; ./index.php");
+    header("Refresh: 0; ./startpage.php");
 }
 ?>
 <!doctype html>
@@ -14,7 +14,7 @@ if (isset($_SESSION['UserRoll'])) {
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="./cs/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Login portal</title>
   </head>
   <body class = "background">

@@ -1,8 +1,8 @@
 <?php
 include('./functions/userRoleSystem.php');
-if (! ($userRole == "1") ) {
+if (! ($userRole == "3") ) {
     session_unset();
-    header("Refresh: 0; ./index.php");
+    header("Refresh: 0; ./startpage.php");
 }
 // choose between 1: super user,    2: warehouse-admin,     3: financial admin,     4: student
 ?>

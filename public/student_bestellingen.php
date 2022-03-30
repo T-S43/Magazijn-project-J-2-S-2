@@ -6,31 +6,38 @@ if (! ($userRole == "4") ) {
 }
 // choose between 1: super user,    2: warehouse-admin,     3: financial admin,     4: student
 
-$sql = "SELECT * FROM `warehouse`";
-$result = mysqli_query($conn, $sql);
+$userId = $_SESSION['id'];
+// Left join for warehouse name or any other needed information
+$sql = "SELECT * FROM `request` LEFT JOIN `warehouse` ON (request.warehouseId = warehouse.id) WHERE $userId = `userId`";
 
+$result = mysqli_query($conn, $sql);
 // record is used for the table top row.
 $record = "";
- 
     echo "<table>";
     echo "<tr>";
     echo "<th>Naam</th>";
+    echo "<th>Bericht</th>";
     echo "<th>Hoeveelheid</th>";
-    echo "<th>Aanvragen?</th>";
+    echo "<th>Status</th>";
     echo "</tr>";
 // records goes through all records that come through the database and prints them out if the requirement is correct.
     $records = "";
 
 while ($record = mysqli_fetch_assoc($result)) {
-    if($record["available"] == 1) {
+    if ($record['accepted'] == '0') {
+        $acceptedCheck = 'Niet geaccepteerd';
+    } else if ($record['accepted'] == '1') {
+        $acceptedCheck = 'Geaccepteerd';
+    } else {
+        $acceptedCheck = 'ERROR NOTIFY YOUR ADMIN CODE:2578';
+    }
+
         $records .= "<tr><td>" .
             $record["Name"] . "</td><td>" .
-            $record["Amount"] . "</td>" .
-                "<td>
-                    <a href='./student_aanvragen.php?id=" . $record ["id"] . "'>[X]</a>
-                </td>
-            </tr>";
-        }
+            $record["message"] . "</td><td>" .
+            $record["amount"] . "</td><td>".
+            $acceptedCheck . "</td></tr>";
+
     }
 ?>
 
@@ -46,8 +53,8 @@ while ($record = mysqli_fetch_assoc($result)) {
 <body>
 
 <p><?=$records?></p>
-<a href="student_bestellingen.php">Bestellingen bekijken</a>
 
+<a href="student.php">Terug naar student pagina</a>
 
 
 </body>

@@ -23,6 +23,6 @@ switch ($_SESSION["UserRoll"]) {
     
     default;
         session_unset();
-        header("Refresh 0; ./index.php");
+        header("Refresh 0; ./startpage.php");
 }
 ?>

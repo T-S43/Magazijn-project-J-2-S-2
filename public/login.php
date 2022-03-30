@@ -40,7 +40,7 @@
             break;
 
             default;
-                header("Refresh: 0; ./index.php");
+                header("Refresh: 0; ./startpage.php");
             break;
         }
         // header("Refresh: 0; ./test.php");
@@ -48,6 +48,6 @@
         // if email, password or both fails
         $message = "Your credentials are not correct.";
         echo $message;
-        header("Refresh: 0; ./index.php");
+        // header("Refresh: 0; ./index.php");
     }
 ?>
