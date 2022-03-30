@@ -15,6 +15,7 @@
         $query = mysqli_query($conn, $sql);
         $data = mysqli_fetch_assoc($query);
         // We are giving with the user info
+            $_SESSION["id"] = $record["id"];
             $_SESSION["email"] = $record["email"];
             $_SESSION["firstname"] = $data["firstname"];
             $_SESSION["lastname"] = $data["lastname"];

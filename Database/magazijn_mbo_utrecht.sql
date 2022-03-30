@@ -127,3 +127,47 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+--
+-- Table structure for table `request`
+--
+
+DROP TABLE IF EXISTS `request`;
+CREATE TABLE IF NOT EXISTS `request` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NOT NULL,
+  `warehouseId` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `message` varchar(250) NOT NULL,
+  `location` varchar(250) NOT NULL,
+  `accepted` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `userId` (`userId`),
+  KEY `warehouseId` (`warehouseId`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `request`
+--
+
+INSERT INTO `request` (`id`, `userId`, `warehouseId`, `amount`, `message`, `location`, `accepted`) VALUES
+(3, 4, 6, 3, 'Thuis gebruik', 'Daltonlaan', 0),
+(5, 9, 2, 2, 'TEST DELETE ME', 'DAltondreef', 0),
+(6, 4, 2, 2, 'Testing reasons', 'Kaneneiland', 0),
+(7, 4, 2, 10, 'Power kable is alweer kapot dit is een lange zin met veel woorden hoe gaat het met jouw? alles is oke hier', 'Daltonlaan', 0);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `request`
+--
+ALTER TABLE `request`
+  ADD CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `warehouseId` FOREIGN KEY (`warehouseId`) REFERENCES `warehouse` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
