@@ -11,7 +11,7 @@
     <div class="buttonContainer">
         <div class="buttonColumn">
             <ul class="buttonList">
-                <li><button class="buttonGreen">Stock</button></li>
+                <li><button class="buttonGreen">Warehouse</button></li>
                 <li><button class="buttonGreen">Current Employees</button></li>
                 <li><button class="buttonGreen">Equipment</button></li>
                 <li><button class="buttonGreen">Managers</button></li>
