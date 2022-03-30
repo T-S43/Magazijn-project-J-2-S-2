@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 26 feb 2022 om 20:10
--- Serverversie: 5.7.31
--- PHP-versie: 7.3.21
+-- Generation Time: Mar 29, 2022 at 01:31 PM
+-- Server version: 5.7.31
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,67 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `roll`
+-- Table structure for table `cart`
+--
+
+DROP TABLE IF EXISTS `cart`;
+CREATE TABLE IF NOT EXISTS `cart` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `product_name` varchar(150) NOT NULL,
+  `qty` int(40) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `product_name`, `qty`) VALUES
+(50, 'Nietmaschine', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE IF NOT EXISTS `orders` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `productName` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+DROP TABLE IF EXISTS `products`;
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `product_name` varchar(150) NOT NULL,
+  `price` int(11) NOT NULL,
+  `descr` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `product_name`, `price`, `descr`) VALUES
+(16, 'Nietmaschine', 13, 'Nietmaschine voor kleine en middelgrote nietjes. Geschikt voor kinderen en volwassene'),
+(17, 'nietjes klein 2000stk', 3, 'kleine nietjes(koper)'),
+(18, 'print papier A4 500vl', 10, 'print papier, A4 formaat. Geschikt voor alle klueren'),
+(19, 'doos potloden 20stk', 4, 'grijze potloden'),
+(20, 'balpennen 10stk', 5, 'balpennen 10stk bluaw.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roll`
 --
 
 DROP TABLE IF EXISTS `roll`;
@@ -35,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `roll` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `roll`
+-- Dumping data for table `roll`
 --
 
 INSERT INTO `roll` (`rollName`, `Omschrijving`) VALUES
@@ -45,7 +105,7 @@ INSERT INTO `roll` (`rollName`, `Omschrijving`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `userinfo`
+-- Table structure for table `userinfo`
 --
 
 DROP TABLE IF EXISTS `userinfo`;
@@ -61,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `userinfo` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `users`
+-- Table structure for table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -75,19 +135,21 @@ CREATE TABLE IF NOT EXISTS `users` (
   `UserRoll` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `userRoll` (`UserRoll`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `pass`, `firstname`, `infix`, `lastname`, `UserRoll`) VALUES
-(3, 'skylorvd@gmail.com', '123', 'sky', 'van', 'duss', 'SuperUser');
+(7, '1@gmail.com', '123', 'student', '', 'student', 'Student'),
+(8, '2@gmail.com', '123', 'super', '', 'super', 'SuperUser'),
+(9, '3@gmail.com', '123', '3', '', '3', 'Student');
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `warehouse`
+-- Table structure for table `warehouse`
 --
 
 DROP TABLE IF EXISTS `warehouse`;
@@ -102,23 +164,23 @@ CREATE TABLE IF NOT EXISTS `warehouse` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Beperkingen voor geëxporteerde tabellen
+-- Constraints for dumped tables
 --
 
 --
--- Beperkingen voor tabel `userinfo`
+-- Constraints for table `userinfo`
 --
 ALTER TABLE `userinfo`
   ADD CONSTRAINT `userinfo_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`id`);
 
 --
--- Beperkingen voor tabel `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`UserRoll`) REFERENCES `roll` (`rollName`);
 
 --
--- Beperkingen voor tabel `warehouse`
+-- Constraints for table `warehouse`
 --
 ALTER TABLE `warehouse`
   ADD CONSTRAINT `warehouse_ibfk_1` FOREIGN KEY (`LocationID`) REFERENCES `userinfo` (`id`);
