@@ -14,5 +14,8 @@ foreach ($data['users'] as $user) {
     <li>
         <a href="<?php echo URLROOT; ?>/warehouse/Items">Items</a>
     </li>
+    <li>
+        <a href="<?php echo URLROOT; ?>/artikelen_informatie/index">Artikelen</a>
+    </li>
 
 
