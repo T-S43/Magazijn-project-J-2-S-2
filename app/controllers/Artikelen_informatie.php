@@ -12,23 +12,15 @@ class Artikelen_informatie extends Controller {
 
         // records goes through all records that come through the database and prints them out if the requirement is correct.
     $records = "";
+    ///////////Acceptie naam can be changed in the future if you want to use teacher from the database////////////////////////////////////
     foreach($artikelData as $value) {
         $records .= "<tr>";
-        $records .= "<td>" . $value->firstname . "</td><td> " . $value->tijdelijkAcceptieNaam . "</td><td> " . $value->dateAcceptance . "</td><td> " . $value->dateRetour . "</td> ";
+        $records .= "<td>" . $value->firstname . " " . $value->lastname . "</td><td>" . $value->tijdelijkAcceptieNaam . "</td><td> " . $value->dateAcceptance . "</td><td> " . $value->dateRetour . "</td> ";
         $records .= "</tr>";
     }
-// foreach ($record = mysqli_fetch_assoc($artikelData)) {
-//         $records .= "<tr><td>" .
-//             $record["name"] . "</td><td>" .
-//             $record["tijdelijkAcceptieNaam"] . "</td><td>" .
-//             $record["dateAcceptance"] . "</td><td>".
-//             $record["dateRetour"] . "</td></tr>";
-//         }
-        $data = [
-            'artikelenRows' => $records
-        ];
+
+    $data = ['artikelenRows' => $records];
+
     $this->view('artikelen_informatie/index', $data);
-    }
-    //         foreach ($countries as $value) {
-    //             $rows .= $value->id 
+    } 
 }

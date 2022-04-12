@@ -33,10 +33,10 @@ while ($record = mysqli_fetch_assoc($result)) {
     }
 
         $records .= "<tr><td>" .
-            $record["Name"] . "</td><td>" .
-            $record["message"] . "</td><td>" .
-            $record["amount"] . "</td><td>".
-            $acceptedCheck . "</td></tr>";
+            $record["Name"] . " </td><td> " .
+            $record["message"] . " </td><td> " .
+            $record["amount"] . " </td><td> ".
+            $acceptedCheck . " </td></tr> ";
 
     }
 ?>
@@ -54,7 +54,7 @@ while ($record = mysqli_fetch_assoc($result)) {
 
 <p><?=$records?></p>
 
-<a href="student.php">Terug naar student pagina</a>
+<a href="">Terug naar student pagina</a>
 
 
 </body>
