@@ -16,7 +16,8 @@ class registerUser{
         // var_dump($result);exit();
         return $result;
     }
-    public function createRegisterUser($data){
+    public function createRegisterUser($data)
+    {
         //insert for the data
         $this->db->query("INSERT INTO users(`id`, `email`, `pass`, `firstname`, `infix`, `lastname`, `UserRoll`) VALUES(NULL, :email, :pass, :firstname, :infix, :lastname, :UserRoll)");
 
@@ -24,14 +25,16 @@ class registerUser{
         $this->bindUsers($data);
 
         //execute the function
-        if ($this->db->execute()){
+        if ($this->db->execute())
+        {
             return true;
         }else {
             return false;
         }
     }
     //methode to update the user
-    public function updateUser($post){
+    public function updateUser($post)
+    {
         $this->db->query("UPDATE users 
                                         SET email = :email,
                                             pass = :pass, 
@@ -46,14 +49,16 @@ class registerUser{
         return $this->db->execute();
     }
     // method to delete a user
-    public function deleteUser($id){
+    public function deleteUser($id)
+    {
         $this->db->query("DELETE FROM users WHERE id = :id");
         $this->db->bind(':id', $id);
         $this->db->execute();
     }
 
     //bind the data that we need and made a method of it
-    public function bindUsers($data){
+    public function bindUsers($data)
+    {
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':pass', $data['pass']);
         $this->db->bind(':firstname', $data['firstname']);
@@ -64,7 +69,8 @@ class registerUser{
 
 
     // get the user id from a single user to use that id in the update script
-    public function getSingleUser($id){
+    public function getSingleUser($id)
+    {
         $this->db->query("SELECT * FROM users WHERE id = :id");
         $this->db->bind(':id', $id, PDO::PARAM_INT);
         //only returns 1 row with the right id
