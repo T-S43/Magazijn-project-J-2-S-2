@@ -99,7 +99,7 @@ if(isset($_POST['submit'])) {
     $qry = "INSERT INTO users values(null, '$email','$password', '$firstName', '$infix', '$lastName', '$rolls')";
 //checking for the connection
     if(mysqli_query($conn, $qry)){
-        header("Refresh: 0; ./registerSuperUser.php");
+        header("Refresh: 0; ./registerUsers.php");
     }else{
         echo mysqli_error($conn);
     }

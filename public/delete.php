@@ -11,7 +11,7 @@ $id = $_GET['id'];
 $try="DELETE FROM `users` WHERE `id`= $id";
 //refresh the page
 if(mysqli_query($conn, $try)){
-    header("Refresh: 0; ./registerSuperUser.php");
+    header("Refresh: 0; ./registerUsers.php");
 }else{
     echo mysqli_error($conn);
 }
