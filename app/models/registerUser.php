@@ -55,10 +55,10 @@ class registerUser{
     //bind the data that we need and made a method of it
     public function bindUsers($data){
         $this->db->bind(':email', $data['email']);
-        $this->db->bind(':pass', $data['pass'], PDO::PARAM_STR);
-        $this->db->bind(':firstname', $data['firstname'], PDO::PARAM_STR);
-        $this->db->bind(':infix', $data['infix'], PDO::PARAM_STR);
-        $this->db->bind(':lastname', $data['lastname'], PDO::PARAM_STR);
+        $this->db->bind(':pass', $data['pass']);
+        $this->db->bind(':firstname', $data['firstname']);
+        $this->db->bind(':infix', $data['infix']);
+        $this->db->bind(':lastname', $data['lastname']);
         $this->db->bind(':UserRoll', $data['UserRoll']);
     }
 
