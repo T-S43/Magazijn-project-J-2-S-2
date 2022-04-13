@@ -81,7 +81,7 @@ if(isset($_POST['update'])){
     $qry="UPDATE `users` SET `email`='$email', `pass`='$pass', `firstname`='$firstname', `infix`='$infix', `lastname`='$lastname', `UserRoll`='$UserRoll' WHERE `id`=$id";
     //checking fi everything works
     if(mysqli_query($conn, $qry)){
-        header('location: ./registerSuperUser.php');
+        header('location: ./registerUsers.php');
     }else{
         echo mysqli_error($conn);
     }
