@@ -54,7 +54,7 @@ while ($record = mysqli_fetch_assoc($result)) {
 
 <p><?=$records?></p>
 
-<a href="">Terug naar student pagina</a>
+<a href="./student-index.php">Terug naar student pagina</a>
 
 
 </body>
