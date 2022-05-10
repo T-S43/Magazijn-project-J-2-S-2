@@ -10,7 +10,7 @@ class Lending {
     } 
 
     public function lendRequests ($data) {
-
+        $this->db->query("INSERT INTO lend( ");
     }
 }
 ?>
