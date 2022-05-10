@@ -24,7 +24,7 @@
         // Depending on the user rol he or she will be send to their page
         switch ($record["UserRoll"]) {
             case "student":
-                header("Refresh: 0; ./student.php");
+                header("Refresh: 0; ./student-index.php");
             break;
             
             case "financial-admin":
@@ -46,8 +46,9 @@
         // header("Refresh: 0; ./test.php");
     } else {
         // if email, password or both fails
-        $message = "Your credentials are not correct.";
+        $message = "<h1>Your credentials are not correct.<br>Please try again</h1>";
         echo $message;
-        // header("Refresh: 0; ./index.php");
+        // sleep();
+        header("Refresh: 3; ./startpage.php");
     }
 ?>
