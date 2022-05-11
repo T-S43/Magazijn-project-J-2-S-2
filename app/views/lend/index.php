@@ -4,11 +4,16 @@
         <th>lendID</th>
         <th>requestID</th>
         <th>warehouseID</th>
-        
+        <th>userID</th>
+        <th>timestamp</th>
+        <th>start lendperiod</th>
+        <th>status</th>
+        <th>approve</th>
+        <th>deny</th>
+        <th>delete</th>
     </tr>
-    <tr>
-        <td><?php echo $data['lendData']; ?></td>
-    </tr>
+    
+    <?php echo $data['lendData']; ?>    
 
 </table>
 <br><br>

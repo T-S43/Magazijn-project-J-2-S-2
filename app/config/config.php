@@ -9,7 +9,7 @@
     define('APPROOT', dirname(dirname(__FILE__)));
 
     //URLROOT (Dynamic links)
-    define('URLROOT', 'http://www.magazijnproject.org');
+    define('URLROOT', 'magazijnproject.org');
 
     //Sitename
     define('SITENAME', 'magazijnmanakes');
