@@ -12,7 +12,7 @@
             $row = "";
             foreach($lendData as $lendInfo) {
                 $row .= "<tr>";
-                $row .= "<td>" . $lendInfo->lendID . "</td><td> " . $lendInfo->wareHouseID . "</td><td> " . $lendInfo->userID . "</td><td> " . $lendInfo->timestamp . "</td><td> " . $lendInfo->lendPeriod . "</td> ";
+                $row .= "<td>" . $lendInfo->lendID . "</td><td> " . $lendInfo->warehouseID . "</td><td> " . $lendInfo->userID . "</td><td> " . $lendInfo->timestamp . "</td><td> " . $lendInfo->lendPeriod . "</td> ";
                 $row .= "</tr>";
             }
             $data = [

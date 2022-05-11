@@ -2,6 +2,9 @@
 class Lending {
     private $db;
 
+    public function __construct() {
+        $this->db = new Database;
+    }
     public function getLend() {
         //collect data from database and table
         $this->db->query("SELECT * FROM lend");
@@ -9,8 +12,8 @@ class Lending {
         return $result;
     } 
 
-    public function lendRequests ($data) {
+    /*public function lendRequests ($data) {
         $this->db->query("INSERT INTO lend( ");
-    }
+    }*/
 }
 ?>
