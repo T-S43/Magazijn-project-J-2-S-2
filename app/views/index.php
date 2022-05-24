@@ -23,5 +23,8 @@ foreach ($data['users'] as $user) {
     <li>
         <a href="../../public/startpage.php">the old system/pages</a>
     </li>
+    <li>
+        <a href="<?php echo URLROOT; ?>/managewarehouse/index">warehouseadmin</a>
+    </li>
 
 
