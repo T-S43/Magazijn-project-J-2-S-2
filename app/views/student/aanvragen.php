@@ -11,7 +11,7 @@
       }
 
       a {
-        color: rgb(45, 78, 100) !important;
+        color: rgb(30, 213, 226) !important;
         text-decoration: none !important;
       }
     </style>
