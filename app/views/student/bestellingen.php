@@ -1,46 +1,3 @@
-<?php
-include('./functions/userRoleSystem.php');
-if (! ($userRole == "4") ) {
-    session_unset();
-    header("Refresh: 0; ./index.php");
-}
-// choose between 1: super user,    2: warehouse-admin,     3: financial admin,     4: student
-
-$userId = $_SESSION['id'];
-// Left join for warehouse name or any other needed information
-$sql = "SELECT * FROM `request` LEFT JOIN `warehouse` ON (request.warehouseId = warehouse.id) WHERE $userId = `userId`";
-
-$result = mysqli_query($conn, $sql);
-// record is used for the table top row.
-$record = "";
-    echo "<table>";
-    echo "<tr>";
-    echo "<th>Naam</th>";
-    echo "<th>Bericht</th>";
-    echo "<th>Hoeveelheid</th>";
-    echo "<th>Status</th>";
-    echo "</tr>";
-// records goes through all records that come through the database and prints them out if the requirement is correct.
-    $records = "";
-
-while ($record = mysqli_fetch_assoc($result)) {
-    if ($record['accepted'] == '0') {
-        $acceptedCheck = 'Niet geaccepteerd';
-    } else if ($record['accepted'] == '1') {
-        $acceptedCheck = 'Geaccepteerd';
-    } else {
-        $acceptedCheck = 'ERROR NOTIFY YOUR ADMIN CODE:2578';
-    }
-
-        $records .= "<tr><td>" .
-            $record["Name"] . " </td><td> " .
-            $record["message"] . " </td><td> " .
-            $record["amount"] . " </td><td> ".
-            $acceptedCheck . " </td></tr> ";
-
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +9,19 @@ while ($record = mysqli_fetch_assoc($result)) {
 </head>
 <body>
 
-<p><?=$records?></p>
+<table class="table table-hover table-dark table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Naam</th>
+      <th scope="col">Bericht</th>
+      <th scope="col">Hoeveelheid</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+      <?=$data["itemRows"]?>
+  </tbody>
+</table>
 
 <a href="./student-index.php">Terug naar student pagina</a>
 

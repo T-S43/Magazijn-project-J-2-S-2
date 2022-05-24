@@ -1,15 +1,3 @@
-<?php
-    $id = $_GET["id"];
-
-    $sql = "SELECT * FROM `warehouse` WHERE `id` = $id";
-
-    $result = mysqli_query($conn, $sql);
-
-    $record = mysqli_fetch_assoc($result);
-
-// choose between 1: super user,    2: warehouse-admin,     3: financial admin,     4: student
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?=$data["title"]?></title>
+    <style>
+      body {
+          background-color: #484e53!important;
+      }
+
+      a {
+        color: rgb(37, 255, 182) !important;
+        text-decoration: none !important;
+      }
+      h1 {
+        color: rgb(37, 255, 182) !important;
+      }
+      </style>
 </head>
 <body>
-    <!-- Form action post so that admin/super user can see -->
-    <form action="student_aanvragen_script.php" method="POST">
+    <!-- Form to write -->
+    <form action="/student/aanvragen_formulier" method="POST">
         <h1><label for="amount">Hoeveelheid?</label>
             <input type="number" id="amount" name="amount" min="1" required></h1>
         <br>
@@ -36,7 +37,8 @@
                 <option value="Kaneneiland">Kaneneiland</option>
             </select></h1>
         <br>
-            <input type="hidden" value="<?php echo $id; ?>" name="id">
+            <input type="hidden" value="<?php echo $_GET['id'];?>" name="id">
+            <input type="hidden" value="0" name="accepted">
         <input type="submit" style="width:250px; height:30px;">
     </form>
     
