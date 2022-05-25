@@ -92,5 +92,6 @@ class registerUsers extends Controller {
             $this->registerUserModel->deleteUser($id);
             header('location:' . URLROOT . '/registerUsers/index');
         }
+
     }
 }
