@@ -21,6 +21,9 @@ foreach ($data['users'] as $user) {
         <a href="<?php echo URLROOT; ?>/registerUsers/index">register</a>
     </li>
     <li>
+        <a href="<?php echo URLROOT; ?>/student/index">student</a>
+    </li>
+    <li>
         <a href="../../public/startpage.php">the old system/pages</a>
     </li>
     <li>

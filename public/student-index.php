@@ -23,6 +23,9 @@ if (! ($userRole == "4") ) {
     <h1>
         <a href="student.php">Voorwerpen aanvragen</a>
     </h1>
+    <h1>
+        <a href="startpage.php">Uitloggen</a>
+    </h1>
 
 
 
