@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 29, 2022 at 01:31 PM
--- Server version: 5.7.31
--- PHP Version: 7.4.9
+-- Generation Time: Apr 11, 2022 at 09:23 PM
+-- Server version: 8.0.21
+-- PHP Version: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `cart`;
 CREATE TABLE IF NOT EXISTS `cart` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `product_name` varchar(150) NOT NULL,
-  `qty` int(40) NOT NULL,
+  `qty` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
@@ -45,12 +45,30 @@ INSERT INTO `cart` (`id`, `product_name`, `qty`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `lend`
+--
+
+DROP TABLE IF EXISTS `lend`;
+CREATE TABLE IF NOT EXISTS `lend` (
+  `lendID` int NOT NULL AUTO_INCREMENT,
+  `warehouseID` int NOT NULL,
+  `userID` int NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lendApproved` tinyint NOT NULL DEFAULT '0',
+  PRIMARY KEY (`lendID`),
+  KEY `WarehouseID` (`warehouseID`),
+  KEY `UserID` (`userID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orders`
 --
 
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE IF NOT EXISTS `orders` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `productName` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -63,9 +81,9 @@ CREATE TABLE IF NOT EXISTS `orders` (
 
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE IF NOT EXISTS `products` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `product_name` varchar(150) NOT NULL,
-  `price` int(11) NOT NULL,
+  `price` int NOT NULL,
   `descr` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
@@ -80,6 +98,36 @@ INSERT INTO `products` (`id`, `product_name`, `price`, `descr`) VALUES
 (18, 'print papier A4 500vl', 10, 'print papier, A4 formaat. Geschikt voor alle klueren'),
 (19, 'doos potloden 20stk', 4, 'grijze potloden'),
 (20, 'balpennen 10stk', 5, 'balpennen 10stk bluaw.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `request`
+--
+
+DROP TABLE IF EXISTS `request`;
+CREATE TABLE IF NOT EXISTS `request` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `userId` int NOT NULL,
+  `warehouseId` int NOT NULL,
+  `amount` int NOT NULL,
+  `message` varchar(250) NOT NULL,
+  `location` varchar(250) NOT NULL,
+  `accepted` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `userId` (`userId`),
+  KEY `warehouseId` (`warehouseId`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `request`
+--
+
+INSERT INTO `request` (`id`, `userId`, `warehouseId`, `amount`, `message`, `location`, `accepted`) VALUES
+(3, 4, 6, 3, 'Thuis gebruik', 'Daltonlaan', 0),
+(5, 9, 2, 2, 'TEST DELETE ME', 'DAltondreef', 0),
+(6, 4, 2, 2, 'Testing reasons', 'Kaneneiland', 0),
+(7, 4, 2, 10, 'Power kable is alweer kapot dit is een lange zin met veel woorden hoe gaat het met jouw? alles is oke hier', 'Daltonlaan', 0);
 
 -- --------------------------------------------------------
 
@@ -110,8 +158,8 @@ INSERT INTO `roll` (`rollName`, `Omschrijving`) VALUES
 
 DROP TABLE IF EXISTS `userinfo`;
 CREATE TABLE IF NOT EXISTS `userinfo` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userID` int(11) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `userID` int NOT NULL,
   `Location` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `userID` (`userID`),
@@ -126,7 +174,7 @@ CREATE TABLE IF NOT EXISTS `userinfo` (
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL,
   `firstname` text NOT NULL,
@@ -154,11 +202,11 @@ INSERT INTO `users` (`id`, `email`, `pass`, `firstname`, `infix`, `lastname`, `U
 
 DROP TABLE IF EXISTS `warehouse`;
 CREATE TABLE IF NOT EXISTS `warehouse` (
-  `id` int(15) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `Name` varchar(50) NOT NULL,
-  `Amount` int(10) NOT NULL,
+  `Amount` int NOT NULL,
   `available` tinyint(1) NOT NULL,
-  `LocationID` int(11) NOT NULL,
+  `LocationID` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `location` (`LocationID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -166,6 +214,13 @@ CREATE TABLE IF NOT EXISTS `warehouse` (
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `lend`
+--
+ALTER TABLE `lend`
+  ADD CONSTRAINT `UserID` FOREIGN KEY (`userID`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `WarehouseID` FOREIGN KEY (`warehouseID`) REFERENCES `warehouse` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `userinfo`
@@ -184,50 +239,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `warehouse`
   ADD CONSTRAINT `warehouse_ibfk_1` FOREIGN KEY (`LocationID`) REFERENCES `userinfo` (`id`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
---
--- Table structure for table `request`
---
-
-DROP TABLE IF EXISTS `request`;
-CREATE TABLE IF NOT EXISTS `request` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userId` int(11) NOT NULL,
-  `warehouseId` int(11) NOT NULL,
-  `amount` int(11) NOT NULL,
-  `message` varchar(250) NOT NULL,
-  `location` varchar(250) NOT NULL,
-  `accepted` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `userId` (`userId`),
-  KEY `warehouseId` (`warehouseId`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `request`
---
-
-INSERT INTO `request` (`id`, `userId`, `warehouseId`, `amount`, `message`, `location`, `accepted`) VALUES
-(3, 4, 6, 3, 'Thuis gebruik', 'Daltonlaan', 0),
-(5, 9, 2, 2, 'TEST DELETE ME', 'DAltondreef', 0),
-(6, 4, 2, 2, 'Testing reasons', 'Kaneneiland', 0),
-(7, 4, 2, 10, 'Power kable is alweer kapot dit is een lange zin met veel woorden hoe gaat het met jouw? alles is oke hier', 'Daltonlaan', 0);
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `request`
---
-ALTER TABLE `request`
-  ADD CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `warehouseId` FOREIGN KEY (`warehouseId`) REFERENCES `warehouse` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
