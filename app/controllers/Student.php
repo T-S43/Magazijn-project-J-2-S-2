@@ -21,8 +21,7 @@ class Student extends Controller {
     foreach($items as $value) {
         $records.= "<tr>";
         $records.= "<td>" . $value->Name . "</td><td>" . $value->Amount . "</td>";
-        $records.= "<td><a href=" . URLROOT . "/student/aanvragen_formulier?id=$value->id>[X]</a></td></tr>";
-        // $records .= "<td><a href='update.php'?id=$value->id'><i class ='bi bi-pencil-square'></li></></td>";
+        $records.= "<td><a href=" . URLROOT . "/student/aanvragen_formulier?id=$value->id><i class= 'bi bi-check-square'></i></a></td></tr>";
     }
 
     $stylesheet = URLROOT . "/student/style.css";
@@ -41,13 +40,31 @@ class Student extends Controller {
     public function aanvragen_formulier($id = null) {
         // var_dump($id);exit();
         // delete this after getting userrole and login system backup
+        // $userId = 4;
 
+        $data = [
+            'amount' => '',
+            'message' => '',
+            'location' => '',
+            'id' => '',
+            'accepted' => '',
+            'userId' => ''
+        ];
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = [
+                'amount' => $_POST['amount'],
+                'message' => $_POST['message'],
+                'location' => $_POST['location'],
+                'id' => $_POST['id'],
+                'accepted' => $_POST['accepted'],
+                'userId' => $_POST['userId']
+            ];
+            // var_dump($_POST);exit();
             //executing the method in models
-            $this->studentModel->createAanvragen($_POST);
+            $this->studentModel->createAanvragen($data);
             //returning to the index page
-            header('location:' . '/student/aanvragen_formulier');
+            header('location:' . URLROOT . '/student/aanvragen_formulier');
         }else{
             $row = $this->studentModel->getSingleUser($id);
             $row = 

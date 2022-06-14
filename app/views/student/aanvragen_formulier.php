@@ -39,6 +39,7 @@
         <br>
             <input type="hidden" value="<?php echo $_GET['id'];?>" name="id">
             <input type="hidden" value="0" name="accepted">
+            <input type="hidden" value="4" name="userId">
         <input type="submit" style="width:250px; height:30px;">
     </form>
     

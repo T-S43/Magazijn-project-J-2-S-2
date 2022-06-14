@@ -14,9 +14,10 @@
 
         public function createAanvragen ($data){
             // Insert into the database
-            $this->db->query("INSERT INTO request (`amount`, `message`, `location`, `accepted`) VALUES (:amount, :message, :location, :accepted");
-            $this->db->bind(':id', $data["id"], PDO::PARAM_INT);
+            $this->db->query("INSERT INTO request (userId, warehouseId, amount, message, location, accepted) VALUES (:userId, :id, :amount, :message, :location, :accepted");
             //This is to bind all values
+            $this->db->bind(':userId', $data['userId']);
+            $this->db->bind(':id', $data["id"], PDO::PARAM_INT);
             $this->db->bind(':amount', $data['amount']);
             $this->db->bind(':message', $data['message']);
             $this->db->bind(':location', $data['location']);
@@ -27,7 +28,6 @@
             }else{
                 return false;
     }
-
 }
 
         public function getBestellingen (){
