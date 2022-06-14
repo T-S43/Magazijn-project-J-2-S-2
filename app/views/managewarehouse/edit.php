@@ -1,5 +1,18 @@
-<!-- the title of the update-->
-<?= $data['title'];?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #484e53!important;
+        }
+    </style>
+    <!-- the title of the update-->
+    <title><?= $data['title'];?></title>
+</head>
+<body>
 <!-- the form to get the controller in the view en use it to do the methods-->
 <form action="<?= URLROOT; ?>/managewarehouse/edit" method="POST">
     <table>
@@ -41,3 +54,5 @@
 
         </tbody>
     </table>
+    </body>
+</html>

@@ -29,10 +29,22 @@ foreach ($data['users'] as $user) {
 <ul>
     <h1>
         <li>
-            <a href="<?php echo URLROOT; ?>/new/newsystem">New system</a>
+            <a href="<?php echo URLROOT; ?>/warehouse/index">warehouse</a>
         </li>
         <li>
-            <a href="../../public/startpage.php">the old system/pages</a>
+            <a href="<?php echo URLROOT; ?>/warehouse/Items">Items</a>
+        </li>
+        <li>
+            <a href="<?php echo URLROOT; ?>/artikelen_informatie/index">Artikelen</a>
+        </li>
+        <li>
+            <a href="<?php echo URLROOT; ?>/registerUsers/index">register</a>
+        </li>
+        <li>
+            <a href="<?php echo URLROOT; ?>/student/index">student</a>
+        </li>
+        <li>
+            <a href="<?php echo URLROOT; ?>/managewarehouse/index">warehouseadmin</a>
         </li>
     </h1>
 </body>

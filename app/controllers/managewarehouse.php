@@ -17,15 +17,16 @@ class managewarehouse extends Controller
             //put info in the rows to write it
             $rows .= "<tr>";
             $rows .= "<td>" . $value->id . "</td><td> " . $value->Name . "</td><td> " . $value->Amount . "</td><td> " . $value->available . "</td><td> " . $value->Location . "</td> ";
-            $rows .= "<td> <a href='/managewarehouse/edit/$value->id'>update</a></td>";
-            $rows .= "<td> <a href='/managewarehouse/delete?id=$value->id'>delete</a></td>";
+            $rows .= "<td> <a href='/managewarehouse/edit/$value->id'><i class= 'bi bi-check-square'></a></td>";
+            $rows .= "<td> <a href='/managewarehouse/delete?id=$value->id'><i class= 'bi bi-check-square'></a></td>";
             $rows .= "</tr>";
         }
-
+        $title = "Manage the warehouse";
         //put the data in an array
         $data =
             [
-                'warehouseData' =>$rows
+                'warehouseData' =>$rows,
+                'title' =>$title
             ];
 
         //put the information to the view

@@ -12,4 +12,11 @@ class Pages extends Controller {
         $this->view('index', $data);
     }
 
+    public function newsystem() {
+        $data = [
+            'title' => 'New Home page'
+        ];
+
+        $this->view('/new/newsystem', $data);
+    }
 }
