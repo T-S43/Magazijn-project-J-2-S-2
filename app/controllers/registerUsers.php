@@ -6,6 +6,7 @@ class registerUsers extends Controller {
     }
 
     public function index(){
+        $title = "Manage the warehouse";
         $usersData = $this->registerUserModel->getRegisterUser();
         $rows = "";
         $id ="";
@@ -14,8 +15,8 @@ class registerUsers extends Controller {
             //put info in the rows
             $rows .= "<tr>";
             $rows .= "<td>" . $value->id . "</td><td> " . $value->email . "</td><td> " . $value->firstname . "</td><td> " . $value->infix . "</td><td> " . $value->lastname . "</td><td>" .$value->UserRoll ."</td> ";
-            $rows .= "<td> <a href='/registerUsers/delete?id=$value->id'>delete</a></td>";
-            $rows .= "<td> <a href='/registerUsers/edit/$value->id'>update</a></td>";
+            $rows .= "<td> <a href='/registerUsers/delete?id=$value->id'><i class= 'bi bi-check-square'></a></td>";
+            $rows .= "<td> <a href='/registerUsers/edit/$value->id'><i class= 'bi bi-check-square'></a></td>";
             $rows .= "</tr>";
         }
 
@@ -29,7 +30,9 @@ class registerUsers extends Controller {
             'infix'=>'',
             'lastname'=>'',
             'UserRoll'=>'',
-            'emailError'=>''
+            'emailError'=>'',
+
+            "title" =>$title
             ];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -74,7 +77,7 @@ class registerUsers extends Controller {
         }else{
             $row = $this->registerUserModel->getSingleUser($id);
             $data=[
-                'title' => '<h1> Update user </h1>',
+                'title' => 'Update user',
                 'row' => $row
                 ];
             $this->view("registerUsers/edit" , $data);

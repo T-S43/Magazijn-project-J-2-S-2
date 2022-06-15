@@ -10,7 +10,7 @@
       }
 
       a {
-        color: rgb(12, 216, 148) !important;
+        color: rgb(30, 213, 226) !important;
         text-decoration: none !important;
       }
     </style>
